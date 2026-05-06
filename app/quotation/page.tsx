@@ -1,3 +1,5 @@
+"use client";
+
 export default function QuotationPage() {
   return (
     <main className="bg-slate-950 text-white min-h-screen py-24 px-6">
@@ -6,28 +8,35 @@ export default function QuotationPage() {
       <form
         action="https://formspree.io/f/mojrwpkj"
         method="POST"
+        onSubmit={(e) => {
+          setTimeout(() => {
+            (e.target as HTMLFormElement).reset();
+          }, 100);
+        }}
         className="max-w-2xl space-y-4"
       >
+
         <input
           type="text"
           name="name"
           placeholder="Your Name"
-          required
+          autoComplete="off"
           className="w-full p-3 rounded bg-slate-900"
         />
 
         <input
           type="email"
           name="email"
-          placeholder="Email Address"
-          required
+          placeholder="Email"
+          autoComplete="off"
           className="w-full p-3 rounded bg-slate-900"
         />
 
         <input
           type="tel"
           name="phone"
-          placeholder="Phone / WhatsApp"
+          placeholder="Phone"
+          autoComplete="off"
           className="w-full p-3 rounded bg-slate-900"
         />
 
@@ -43,7 +52,7 @@ export default function QuotationPage() {
 
         <textarea
           name="message"
-          placeholder="Describe your project"
+          placeholder="Project details"
           rows={5}
           className="w-full p-3 rounded bg-slate-900"
         />
@@ -52,9 +61,9 @@ export default function QuotationPage() {
           type="submit"
           className="bg-blue-500 px-6 py-3 rounded-xl hover:bg-blue-600 transition"
         >
-          Request Quote
+          Submit Quotation
         </button>
-        <input type="hidden" name="_redirect" value="https://novotech-site.vercel.app/quotation/success" />
+
       </form>
     </main>
   );
