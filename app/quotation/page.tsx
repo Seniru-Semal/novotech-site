@@ -54,6 +54,7 @@ export default function QuotationPage() {
         >
           Request Quote
         </button>
+        <input type="hidden" name="_redirect" value="https://novotech-site.vercel.app/quotation/success" />
       </form>
     </main>
   );
