@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --brand-blue: #2563eb;
+  --brand-blue-dark: #1d4ed8;
+
+  --brand-gold: #fbbf24;
+  --brand-gold-dark: #f59e0b;
+
+  /* Base Theme */
+  --background: #0a0f1a;
+  --foreground: #e5e7eb;
+
+  /* Surfaces */
+  --surface-1: #0f172a;
+  --surface-2: #111827;
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.08);
 }
 
+/* Tailwind theme mapping */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-gold: var(--brand-gold);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Dark theme only (we enforce modern dark engineering UI) */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Smooth global UI feel */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: better selection color */
+::selection {
+  background: var(--brand-gold);
+  color: black;
 }

@@ -1,31 +1,37 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const pathname = usePathname();
-
-  const linkClass = (path: string) =>
-    `hover:text-blue-400 transition ${
-      pathname === path ? "text-blue-400" : "text-white/80"
-    }`;
-
   return (
-    <nav className="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="w-full bg-slate-950 text-white border-b border-slate-800 px-6 py-4 flex items-center justify-between">
 
-        <h1 className="font-bold tracking-wide">Novotech</h1>
+      {/* LOGO */}
+      <div className="font-bold text-lg tracking-wide flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-yellow-400" />
+        <span>
+          NOVO TECH <span className="text-yellow-400">JN</span>
+        </span>
+      </div>
 
-        <div className="hidden md:flex space-x-8 text-sm">
-          <Link href="/" className={linkClass("/")}>Home</Link>
-          <Link href="/services" className={linkClass("/services")}>Services</Link>
-          <Link href="/portfolio" className={linkClass("/portfolio")}>Portfolio</Link>
-          <Link href="/contact" className={linkClass("/contact")}>Contact</Link>
-          <Link href="/quotation" className={linkClass("/quotation")}>Get Quote</Link>
-        </div>
+      {/* LINKS */}
+      <div className="hidden md:flex gap-6 text-sm text-gray-300">
+
+        <Link className="hover:text-yellow-400 transition" href="/">Home</Link>
+        <Link className="hover:text-yellow-400 transition" href="/about">About</Link>
+        <Link className="hover:text-yellow-400 transition" href="/services">Services</Link>
+        <Link className="hover:text-yellow-400 transition" href="/portfolio">Portfolio</Link>
+        <Link className="hover:text-yellow-400 transition" href="/lighting">Lighting</Link>
+        <Link className="hover:text-yellow-400 transition" href="/contact">Contact</Link>
 
       </div>
+
+      {/* CTA */}
+      <Link
+        href="/quotation"
+        className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-yellow-500 hover:to-amber-400 transition px-4 py-2 rounded-lg font-medium"
+      >
+        Get Quotation
+      </Link>
+
     </nav>
   );
 }

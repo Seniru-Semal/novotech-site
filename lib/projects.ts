@@ -1,30 +1,30 @@
 export const projects = [
   {
-    id: 1,
-    title: "Industrial Automation Panel",
+    title: "Industrial Automation System",
     category: "Automation",
-    description: "PLC-based control system for factory line automation.",
-    image: "/placeholder.jpg",
+    image: "/projects/automation.jpg",
+    description:
+      "PLC-based industrial control system for process optimization.",
   },
   {
-    id: 2,
     title: "Heavy Fabrication Structure",
     category: "Fabrication",
-    description: "Custom steel structure for industrial warehouse.",
-    image: "/placeholder.jpg",
+    image: "/projects/fabrication.jpg",
+    description:
+      "Custom steel structure fabrication for industrial use.",
   },
   {
-    id: 3,
-    title: "Embedded Control System",
-    category: "Electronics",
-    description: "Microcontroller-based monitoring system.",
-    image: "/placeholder.jpg",
+    title: "Smart Greenhouse System",
+    category: "Agriculture",
+    image: "/projects/agriculture.jpg",
+    description:
+      "Automated irrigation and climate-controlled farming system.",
   },
   {
-    id: 4,
-    title: "Smart Agriculture System",
-    category: "Automation",
-    description: "IoT-based irrigation control solution.",
-    image: "/placeholder.jpg",
+    title: "Architectural Lighting Setup",
+    category: "Lighting",
+    image: "/projects/lighting.jpg",
+    description:
+      "Premium lighting installation for commercial spaces.",
   },
 ];
