@@ -197,7 +197,7 @@ export default function ContactPage() {
           </a>
 
           <a
-            href="mailto:heavyfabrication@iial.lk"
+            href="mailto:info@novotechjn.lk"
             className="border border-white px-8 py-4 rounded-2xl hover:bg-white hover:text-black transition"
           >
             Send Email
