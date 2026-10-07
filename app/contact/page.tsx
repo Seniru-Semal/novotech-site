@@ -50,10 +50,10 @@ export default function ContactPage() {
                 </h3>
 
                 <a
-                  href="mailto:heavyfabrication@iial.lk"
+                  href="mailto:info@novotechjn.lk"
                   className="text-xl hover:text-blue-400"
                 >
-                  heavyfabrication@iial.lk
+                  info@novotechjn.lk
                 </a>
 
               </div>
