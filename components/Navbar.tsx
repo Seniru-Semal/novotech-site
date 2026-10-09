@@ -25,7 +25,7 @@ export default function Navbar() {
               alt="Novotech J.N. Pvt. Ltd"
               fill
               sizes="(max-width: 640px) 176px, 208px"
-              className="object-contain p-2"
+              className="object-cover object-center"
               priority
             />
           </div>
