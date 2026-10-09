@@ -16,36 +16,45 @@ const slides = [
     title: "Mechanical Design & Fabrication",
     subtitle:
       "Structural fabrication, welding, machining, industrial installation and custom engineering solutions.",
-    video: "/hero/fabrication.mp4",
+    image: "/hero/fabrication.jpg",
   },
 
   {
     title: "Architectural & Designer Lighting",
     subtitle:
       "Premium lighting systems engineered to transform buildings, landscapes and commercial spaces.",
-    image: "/hero/lighting.jpg",
+    image: "/hero/lighting.png",
   },
 ];
 
 export default function Home() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
+  const currentSlide = slides[index];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisible(false);
+  let transitionTimeout: ReturnType<typeof setTimeout> | undefined;
 
-      setTimeout(() => {
-        setIndex((prev) => (prev + 1) % slides.length);
-        setVisible(true);
-      }, 500);
-    }, 9000);
+  const interval = setInterval(() => {
+    setVisible(false);
 
-    return () => clearInterval(interval);
-  }, []);
+    transitionTimeout = setTimeout(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+      setVisible(true);
+    }, 500);
+  }, 9000);
+
+  return () => {
+    clearInterval(interval);
+
+    if (transitionTimeout) {
+      clearTimeout(transitionTimeout);
+    }
+  };
+}, []);
 
   return (
-    <main className="bg-[#0a0f1a] text-white min-h-screen">
+    <main className="bg-[#1b3b67] text-white min-h-screen">
 
       {/* ========================================= */}
       {/* HERO SECTION */}
@@ -54,35 +63,32 @@ export default function Home() {
       <section className="relative min-h-screen overflow-hidden flex items-center justify-center text-center">
 
         {/* BACKGROUND MEDIA */}
-        {slides.map((slide, i) => (
           <div
-            key={i}
+            key={`hero-${index}`}
             className={`absolute inset-0 transition-all duration-[2000ms] ${
-              i === index
-                ? "opacity-100 scale-105"
-                : "opacity-0 scale-110"
+              visible ? "scale-105 opacity-100" : "scale-110 opacity-0"
             }`}
           >
-            {"video" in slide ? (
+            {"video" in currentSlide ? (
               <video
                 autoPlay
                 muted
                 loop
                 playsInline
-                className="w-full h-full object-cover"
+                preload="metadata"
+                className="h-full w-full object-cover"
               >
-                <source src={slide.video} type="video/mp4" />
+                <source src={currentSlide.video} type="video/mp4" />
               </video>
             ) : (
               <div
-                className="w-full h-full bg-cover bg-center"
+                className="h-full w-full bg-cover bg-center"
                 style={{
-                  backgroundImage: `url(${slide.image})`,
+                  backgroundImage: `url(${currentSlide.image})`,
                 }}
               />
             )}
           </div>
-        ))}
 
         {/* DARK OVERLAY */}
         <div className="absolute inset-0 bg-black/65" />
@@ -111,7 +117,7 @@ export default function Home() {
           </h1>
 
           <p
-            className={`text-base md:text-lg lg:text-xl text-gray-300 mt-8 max-w-3xl mx-auto leading-relaxed transition-all duration-700 ${
+            className={`text-base md:text-lg lg:text-xl text-slate-200 mt-8 max-w-3xl mx-auto leading-relaxed transition-all duration-700 ${
               visible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6"
@@ -175,7 +181,7 @@ export default function Home() {
 
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-yellow-400 mb-8" />
 
-          <p className="text-gray-400 max-w-2xl mb-14">
+          <p className="text-slate-300 max-w-2xl mb-14">
             Engineering solutions designed to improve performance,
             reliability, efficiency and long-term operational success.
           </p>
@@ -214,7 +220,7 @@ export default function Home() {
             <h3 className="text-5xl font-bold text-yellow-400">
               40+
             </h3>
-            <p className="text-gray-400 mt-2">
+            <p className="text-slate-300 mt-2">
               Years of Engineering Expertise
             </p>
           </div>
@@ -223,7 +229,7 @@ export default function Home() {
             <h3 className="text-5xl font-bold text-yellow-400">
               100+
             </h3>
-            <p className="text-gray-400 mt-2">
+            <p className="text-slate-300 mt-2">
               Projects Delivered
             </p>
           </div>
@@ -232,7 +238,7 @@ export default function Home() {
             <h3 className="text-5xl font-bold text-yellow-400">
               24/7
             </h3>
-            <p className="text-gray-400 mt-2">
+            <p className="text-slate-300 mt-2">
               Technical Support
             </p>
           </div>
@@ -241,7 +247,7 @@ export default function Home() {
             <h3 className="text-5xl font-bold text-yellow-400">
               100%
             </h3>
-            <p className="text-gray-400 mt-2">
+            <p className="text-slate-300 mt-2">
               Custom Solutions
             </p>
           </div>
@@ -263,7 +269,7 @@ export default function Home() {
 
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-yellow-400 mb-8" />
 
-          <p className="text-gray-400 max-w-3xl mb-14">
+          <p className="text-slate-300 max-w-3xl mb-14">
             From premium architectural lighting installations to industrial
             fabrication and automation systems, our projects demonstrate
             engineering precision, innovation and practical performance.
@@ -272,7 +278,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             {/* LIGHTING 01 */}
-            <div className="group bg-slate-900 border border-white/5 rounded-3xl overflow-hidden hover:border-yellow-400 transition-all duration-300">
+            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-yellow-400 transition-all duration-300">
 
               <div
                 className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
@@ -292,7 +298,7 @@ export default function Home() {
                   Premium Lighting Installation
                 </h3>
 
-                <p className="text-gray-400">
+                <p className="text-slate-300">
                   High-end lighting design engineered to enhance visual impact,
                   ambience and energy efficiency.
                 </p>
@@ -302,7 +308,7 @@ export default function Home() {
             </div>
 
             {/* LIGHTING 02 */}
-            <div className="group bg-slate-900 border border-white/5 rounded-3xl overflow-hidden hover:border-yellow-400 transition-all duration-300">
+            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-yellow-400 transition-all duration-300">
 
               <div
                 className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
@@ -322,7 +328,7 @@ export default function Home() {
                   Feature Lighting Concept
                 </h3>
 
-                <p className="text-gray-400">
+                <p className="text-slate-300">
                   Bespoke lighting solutions delivering aesthetic excellence
                   and intelligent control integration.
                 </p>
@@ -332,7 +338,7 @@ export default function Home() {
             </div>
 
             {/* LIGHTING 03 */}
-            <div className="group bg-slate-900 border border-white/5 rounded-3xl overflow-hidden hover:border-yellow-400 transition-all duration-300">
+            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-yellow-400 transition-all duration-300">
 
               <div
                 className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
@@ -352,7 +358,7 @@ export default function Home() {
                   Exterior Illumination System
                 </h3>
 
-                <p className="text-gray-400">
+                <p className="text-slate-300">
                   Precision facade lighting designed to elevate architectural
                   identity and nighttime visibility.
                 </p>
@@ -363,7 +369,7 @@ export default function Home() {
 
             
             {/* MECHANICAL 01 */}
-            <div className="group bg-slate-900 border border-white/5 rounded-3xl overflow-hidden hover:border-blue-500 transition-all duration-300">
+            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-blue-500 transition-all duration-300">
 
               <div
                 className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
@@ -383,7 +389,7 @@ export default function Home() {
                   Industrial Fabrication Project
                 </h3>
 
-                <p className="text-gray-400">
+                <p className="text-slate-300">
                   Heavy-duty fabrication engineered for reliability,
                   durability and operational efficiency.
                 </p>
@@ -393,7 +399,7 @@ export default function Home() {
             </div>
 
             {/* MECHANICAL 02 */}
-            <div className="group bg-slate-900 border border-white/5 rounded-3xl overflow-hidden hover:border-blue-500 transition-all duration-300">
+            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-blue-500 transition-all duration-300">
 
               <div
                 className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
@@ -413,7 +419,7 @@ export default function Home() {
                   Custom Machinery Solution
                 </h3>
 
-                <p className="text-gray-400">
+                <p className="text-slate-300">
                   Designed and manufactured to meet demanding industrial
                   performance requirements.
                 </p>
@@ -448,7 +454,7 @@ export default function Home() {
                   Automation Demonstration System
                 </h3>
 
-                <p className="text-gray-300 leading-relaxed mb-6">
+                <p className="text-slate-200 leading-relaxed mb-6">
                   Integrated PLC control, monitoring and automation
                   technologies developed to improve productivity,
                   reliability and process visibility.

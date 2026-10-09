@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +17,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Novotech J.N. Pvt. Ltd",
-  description: "Automation, fabrication, electronics & engineering solutions",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Novotech J.N. Pvt. Ltd",
+    template: "%s | Novotech J.N. Pvt. Ltd",
+  },
+  description:
+    "Automation, fabrication, precision engineering and architectural lighting solutions for industrial, commercial and lifestyle environments.",
+  keywords: [
+    "industrial automation",
+    "fabrication",
+    "precision engineering",
+    "architectural lighting",
+    "Sri Lanka",
+  ],
+  openGraph: {
+    type: "website",
+    siteName: "Novotech J.N. Pvt. Ltd",
+    title: "Novotech J.N. Pvt. Ltd",
+    description:
+      "Automation, fabrication, precision engineering and architectural lighting solutions.",
+  },
 };
 
 export default function RootLayout({

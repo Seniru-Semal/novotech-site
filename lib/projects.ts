@@ -1,30 +1,51 @@
-export const projects = [
+export type Project = {
+  title: string;
+  category: string;
+  image: string;
+  description: string;
+};
+
+export const projects: Project[] = [
   {
-    title: "Industrial Automation System",
+    title: "Industrial Fabrication & Structural Engineering",
+    category: "Mechanical Fabrication",
+    image: "/projects/mechanical-1.jpg",
+    description:
+      "Custom fabrication and structural engineering designed for dependable industrial operation.",
+  },
+  {
+    title: "Precision Engineering Components",
+    category: "Precision Engineering",
+    image: "/projects/mechanical-2.jpg",
+    description:
+      "Purpose-built mechanical work developed to meet demanding project requirements.",
+  },
+  {
+    title: "Industrial Automation & Control",
     category: "Automation",
-    image: "/projects/automation.jpg",
+    image: "/projects/automation-demo.jpg",
     description:
-      "PLC-based industrial control system for process optimization.",
+      "Integrated control, monitoring and automation technologies for improved process visibility.",
   },
   {
-    title: "Heavy Fabrication Structure",
-    category: "Fabrication",
-    image: "/projects/fabrication.jpg",
+    title: "Architectural Lighting Installation",
+    category: "Architectural Lighting",
+    image: "/projects/lighting-1.jpg",
     description:
-      "Custom steel structure fabrication for industrial use.",
+      "Lighting designed to improve ambience, visual impact and energy efficiency.",
   },
   {
-    title: "Smart Greenhouse System",
-    category: "Agriculture",
-    image: "/projects/agriculture.jpg",
+    title: "Designer Lighting Concept",
+    category: "Designer Lighting",
+    image: "/projects/lighting-2.jpg",
     description:
-      "Automated irrigation and climate-controlled farming system.",
+      "Bespoke lighting concepts that bring aesthetic quality and technical detail together.",
   },
   {
-    title: "Architectural Lighting Setup",
-    category: "Lighting",
-    image: "/projects/lighting.jpg",
+    title: "Facade & Exterior Illumination",
+    category: "Facade Lighting",
+    image: "/projects/lighting-3.jpg",
     description:
-      "Premium lighting installation for commercial spaces.",
+      "Exterior lighting designed to strengthen architectural identity and nighttime visibility.",
   },
 ];

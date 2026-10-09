@@ -1,100 +1,72 @@
-export default function Home() {
+import type { Metadata } from "next";
+import QuotationForm from "@/components/QuotationForm";
+
+export const metadata: Metadata = {
+  title: "Request a Quotation",
+  description:
+    "Tell Novotech about your engineering, automation, fabrication or architectural lighting requirement.",
+};
+
+export default function QuotationPage() {
   return (
-    <main className="bg-slate-950 text-white">
+    <main className="min-h-screen bg-slate-950 text-white">
+      <section className="border-b border-slate-800 px-6 py-20 text-center md:py-28">
+        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-yellow-400">
+          Start a project conversation
+        </p>
 
-      {/* HERO SECTION */}
-      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
-
-        <h1 className="text-3xl md:text-6xl font-bold leading-tight max-w-5xl">
-          Smart Engineering & Agriculture & Bespoke Architectural Lighting Solutions
+        <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
+          Request a Quotation
         </h1>
 
-        <p className="mt-6 text-gray-400 max-w-3xl text-lg">
-          Delivering precision engineering, advanced automation, innovative agriculture, and premium lighting solutions tailored for industrial, commercial, and lifestyle environments.
-        </p>
-
-        <p className="mt-3 text-blue-400 font-semibold text-lg">
-          Hotline: +94 710 421 421
-        </p>
-
-        <div className="mt-8 flex gap-4">
-          <a
-            href="/quotation"
-            className="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg"
-          >
-            Get Quotation
-          </a>
-
-          <a
-            href="/services"
-            className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition"
-          >
-            Explore Services
-          </a>
-        </div>
-
-      </section>
-
-      {/* INTRO SECTION */}
-      <section className="px-6 py-20 max-w-5xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4">Who We Are</h2>
-
-        <p className="text-gray-400 leading-relaxed">
-          We are a multidisciplinary engineering company specializing in mechanical design, fabrication, automation systems, and architectural lighting solutions. From heavy-duty industrial fabrication to visually striking lighting designs, we provide complete, customized solutions that combine performance, reliability, and aesthetics.
-        </p>
-
-        <p className="mt-4 text-gray-400 leading-relaxed">
-          We operate as a subsidiary of the Innovation Center of Illukkumbura Industrial Automation Pvt Ltd, backed by over 40 years of engineering expertise.
+        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-400">
+          Share your requirements and we will help identify the right engineering,
+          automation, fabrication or lighting solution.
         </p>
       </section>
 
-      {/* SERVICES PREVIEW */}
-      <section className="px-6 py-20 bg-slate-900">
-        <h2 className="text-2xl font-bold text-center mb-10">
-          What We Offer
-        </h2>
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:py-24">
+        <aside className="lg:pt-6">
+          <h2 className="text-3xl font-bold">What to include</h2>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <p className="mt-5 leading-relaxed text-slate-400">
+            A short outline is enough to start. Include technical requirements,
+            site location, dimensions, quantities and target dates where available.
+          </p>
 
-          {[
-            "Mechanical Design & Fabrication",
-            "Precision Machining",
-            "PLC & Automation",
-            "Electro-Mechanical Systems",
-            "Architectural Lighting",
-            "Agricultural Solutions"
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="bg-slate-950 p-6 rounded-xl border border-slate-800"
+          <div className="mt-8 space-y-4">
+            {[
+              "Project scope and intended outcome",
+              "Drawings, photos or reference material",
+              "Quantity, dimensions and installation location",
+              "Any required timeline or target budget",
+            ].map((item) => (
+              <div
+                key={item}
+                className="flex gap-3 rounded-xl border border-sky-200/60 bg-slate-900/60 p-4 text-slate-200"
+              >
+                <span className="text-yellow-400">✓</span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-sky-200/60 bg-blue-950/30 p-6">
+            <h3 className="font-semibold text-blue-200">
+              Prefer to speak directly?
+            </h3>
+
+            <a
+              href="tel:+94710421421"
+              className="mt-3 inline-block text-xl font-semibold text-white hover:text-yellow-300"
             >
-              <h3 className="font-semibold">{item}</h3>
-            </div>
-          ))}
+              +94 710 421 421
+            </a>
+          </div>
+        </aside>
 
-        </div>
+        <QuotationForm />
       </section>
-
-      {/* CTA SECTION */}
-      <section className="px-6 py-20 text-center">
-
-        <h2 className="text-3xl font-bold mb-4">
-          Let’s Build Something Powerful Together
-        </h2>
-
-        <p className="text-gray-400 mb-6">
-          Partner with us to transform your ideas into practical, high-performance engineering solutions.
-        </p>
-
-        <a
-          href="/quotation"
-          className="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg"
-        >
-          Request a Quotation
-        </a>
-
-      </section>
-
     </main>
   );
 }

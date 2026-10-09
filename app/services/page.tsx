@@ -78,7 +78,7 @@ export default function ServicesPage() {
           Engineering Solutions Built for Performance
         </h1>
 
-        <p className="mt-6 text-gray-400 max-w-3xl mx-auto text-lg">
+        <p className="mt-6 text-slate-300 max-w-3xl mx-auto text-lg">
           We deliver integrated engineering, automation, fabrication, and lighting solutions tailored for industrial, commercial, agricultural, and residential applications.
         </p>
       </section>
@@ -91,14 +91,14 @@ export default function ServicesPage() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 transition"
+              className="bg-slate-900 border border-sky-200/60 rounded-2xl p-8 hover:border-blue-500 transition"
             >
 
               <h2 className="text-2xl font-bold mb-6 text-blue-400">
                 {service.title}
               </h2>
 
-              <ul className="space-y-3 text-gray-300">
+              <ul className="space-y-3 text-slate-200">
                 {service.items.map((item, i) => (
                   <li key={i} className="flex gap-3">
                     <span className="text-blue-400">•</span>
@@ -132,7 +132,7 @@ export default function ServicesPage() {
           ].map((industry, index) => (
             <div
               key={index}
-              className="bg-slate-950 border border-slate-800 rounded-xl p-6"
+              className="bg-slate-950 border border-sky-200/60 rounded-xl p-6"
             >
               {industry}
             </div>
@@ -160,7 +160,7 @@ export default function ServicesPage() {
           ].map((point, index) => (
             <div
               key={index}
-              className="bg-slate-900 border border-slate-800 rounded-xl p-6"
+              className="bg-slate-900 bborder border-sky-200/60 rounded-xl p-6"
             >
               {point}
             </div>
@@ -188,7 +188,7 @@ export default function ServicesPage() {
           ].map((step, index) => (
             <div
               key={index}
-              className="bg-slate-950 border border-slate-800 rounded-xl p-6"
+              className="bg-slate-950 border border-sky-200/60 rounded-xl p-6"
             >
               <div className="text-blue-400 font-bold text-2xl mb-3">
                 {index + 1}
@@ -209,7 +209,7 @@ export default function ServicesPage() {
           Let’s Build Smarter Systems Together
         </h2>
 
-        <p className="text-gray-400 mb-8 max-w-3xl mx-auto">
+        <p className="text-slate-300 mb-8 max-w-3xl mx-auto">
           Contact us today to discuss your engineering, automation, fabrication, or lighting project requirements.
         </p>
 

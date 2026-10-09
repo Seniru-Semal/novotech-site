@@ -9,7 +9,7 @@ export default function AboutPage() {
           Engineering Excellence Backed by Experience
         </h1>
 
-        <p className="mt-6 text-gray-400 max-w-3xl mx-auto text-lg">
+        <p className="mt-6 text-slate-300 max-w-3xl mx-auto text-lg">
           We deliver integrated engineering and lighting solutions that bridge the gap between technical performance and visual excellence.
         </p>
 
@@ -22,7 +22,7 @@ export default function AboutPage() {
           Who We Are
         </h2>
 
-        <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
+        <div className="space-y-6 text-slate-200 leading-relaxed text-lg">
 
           <p>
             NOVO TECH JN PVT LTD is a multidisciplinary engineering company specializing in mechanical engineering, industrial fabrication, automation systems, electro-mechanical integration, and premium architectural lighting solutions.
@@ -51,7 +51,7 @@ export default function AboutPage() {
               Built on 40+ Years of Engineering Expertise
             </h2>
 
-            <div className="space-y-5 text-gray-300 leading-relaxed">
+            <div className="space-y-5 text-slate-200 leading-relaxed">
 
               <p>
                 We are proud to operate as a subsidiary of the Innovation Center of Illukkumbura Industrial Automation Pvt Ltd, a leading provider of innovative and comprehensive engineering systems.
@@ -70,8 +70,15 @@ export default function AboutPage() {
           </div>
 
           {/* Visual Placeholder */}
-          <div className="bg-slate-950 border border-slate-800 rounded-2xl h-80 flex items-center justify-center text-gray-500">
-            Company / Factory Image Placeholder
+          <div
+            className="relative h-80 overflow-hidden rounded-2xl border border-sky-200/60 bg-cover bg-center"
+            style={{ backgroundImage: "url('/projects/mechanical-1.jpg')" }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+
+            <p className="absolute bottom-6 left-6 right-6 text-lg font-semibold text-white">
+              Practical engineering experience, from concept through installation.
+            </p>
           </div>
 
         </div>
@@ -110,7 +117,7 @@ export default function AboutPage() {
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-slate-900 border border-slate-800 rounded-2xl p-8"
+              className="bg-slate-900 border border-sky-200/60 rounded-2xl p-8"
             >
 
               <div className="text-blue-400 font-bold text-2xl mb-4">
@@ -121,7 +128,7 @@ export default function AboutPage() {
                 {item.title}
               </h3>
 
-              <p className="text-gray-400">
+              <p className="text-slate-300">
                 {item.text}
               </p>
 
@@ -151,7 +158,7 @@ export default function AboutPage() {
           ].map((value, index) => (
             <div
               key={index}
-              className="bg-slate-950 border border-slate-800 rounded-xl p-6 text-center"
+              className="bg-slate-950 border border-sky-200/60 rounded-xl p-6 text-center"
             >
               {value}
             </div>
@@ -168,7 +175,7 @@ export default function AboutPage() {
           Let’s Build Innovative Solutions Together
         </h2>
 
-        <p className="text-gray-400 max-w-3xl mx-auto mb-8">
+        <p className="text-slate-300 max-w-3xl mx-auto mb-8">
           From industrial engineering systems to premium lighting environments, our team is ready to help bring your ideas to life.
         </p>
 

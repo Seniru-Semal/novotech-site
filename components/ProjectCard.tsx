@@ -12,7 +12,7 @@ export default function ProjectCard({
   image,
 }: Props) {
   return (
-    <div className="group bg-slate-900/80 backdrop-blur border border-white/5 rounded-xl overflow-hidden border border-white/5 hover:border-blue-500/40 transition">
+    <div className="group bg-slate-900/80 backdrop-blur border border-sky-200/50 rounded-xl overflow-hidden border border-sky-200/50 hover:border-blue-500/40 transition">
 
       {/* IMAGE */}
       <div
@@ -31,7 +31,7 @@ export default function ProjectCard({
           {title}
         </h3>
 
-        <p className="text-gray-400 text-sm">
+        <p className="text-slate-300 text-sm">
           {description}
         </p>
 

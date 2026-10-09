@@ -1,12 +1,12 @@
 export default function LightingPage() {
   return (
-    <main className="bg-black text-white min-h-screen overflow-hidden">
+    <main className="bg-slate-950 text-white min-h-screen overflow-hidden">
 
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6">
 
         {/* Background Glow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-black to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-500/25 via-slate-950/45 to-slate-950"></div>
 
         <div className="relative z-10">
 
@@ -18,11 +18,11 @@ export default function LightingPage() {
             Architectural & Designer Lighting Solutions
           </h1>
 
-          <p className="mt-6 text-2xl text-gray-300 italic">
+          <p className="mt-6 text-2xl text-slate-200 italic">
             Where Light Becomes Design.
           </p>
 
-          <p className="mt-8 text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">
+          <p className="mt-8 text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed">
             We create lighting solutions that go beyond illumination — transforming spaces into experiences through engineering precision, elegant aesthetics, and intelligent automation.
           </p>
 
@@ -37,7 +37,7 @@ export default function LightingPage() {
 
             <a
               href="/portfolio"
-              className="border border-white px-8 py-4 rounded-xl hover:bg-white hover:text-black transition"
+              className="border border-sky-200/60 px-8 py-4 rounded-xl hover:bg-slate-100 hover:text-slate-950 transition"
             >
               View Portfolio
             </a>
@@ -59,7 +59,7 @@ export default function LightingPage() {
               Lighting Beyond Illumination
             </h2>
 
-            <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
+            <div className="space-y-6 text-slate-200 leading-relaxed text-lg">
 
               <p>
                 Our architectural lighting services combine engineering precision with creative design to deliver visually striking, energy-efficient, and fully customized lighting systems.
@@ -78,8 +78,15 @@ export default function LightingPage() {
           </div>
 
           {/* Image Placeholder */}
-          <div className="h-96 rounded-3xl border border-slate-800 bg-gradient-to-br from-blue-500/10 to-slate-900 flex items-center justify-center text-gray-500">
-            Lighting Showcase Placeholder
+          <div
+            className="relative h-96 overflow-hidden rounded-3xl border border-sky-200/60 bg-cover bg-center"
+            style={{ backgroundImage: "url('/projects/lighting-2.jpg')" }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+
+            <p className="absolute bottom-8 left-8 right-8 text-xl font-semibold leading-relaxed text-white">
+              Lighting designed as an integrated part of the space.
+            </p>
           </div>
 
         </div>
@@ -144,14 +151,14 @@ export default function LightingPage() {
           ].map((service, index) => (
             <div
               key={index}
-              className="bg-black border border-slate-800 rounded-3xl p-8 hover:border-blue-500 transition"
+              className="bg-slate-950 border border-sky-200/60 rounded-3xl p-8 hover:border-blue-500 transition"
             >
 
               <h3 className="text-2xl font-bold mb-6 text-blue-400">
                 {service.title}
               </h3>
 
-              <ul className="space-y-4 text-gray-300">
+              <ul className="space-y-4 text-slate-200">
 
                 {service.items.map((item, i) => (
                   <li key={i} className="flex gap-3">
@@ -187,7 +194,7 @@ export default function LightingPage() {
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-slate-950 border border-slate-800 rounded-2xl p-8 text-center"
+              className="bg-slate-950 border border-sky-200/60 rounded-2xl p-8 text-center"
             >
               {item}
             </div>
@@ -216,7 +223,7 @@ export default function LightingPage() {
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-black border border-slate-800 rounded-2xl p-8 text-center"
+              className="bg-slate-950 border border-sky-200/60 rounded-2xl p-8 text-center"
             >
               {item}
             </div>
@@ -233,7 +240,7 @@ export default function LightingPage() {
           We Don’t Just Install Lights — We Design Experiences.
         </h2>
 
-        <p className="mt-8 text-gray-400 text-xl max-w-3xl mx-auto leading-relaxed">
+        <p className="mt-8 text-slate-300 text-xl max-w-3xl mx-auto leading-relaxed">
           Let us help bring your spaces to life with intelligent, elegant, and high-performance lighting solutions.
         </p>
 
