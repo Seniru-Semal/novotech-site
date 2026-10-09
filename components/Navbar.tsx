@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -13,19 +14,29 @@ export default function Navbar() {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 w-full border-b border-slate-800 bg-slate-950/95 px-4 py-4 text-white backdrop-blur md:px-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <div className="font-bold text-lg tracking-wide flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-yellow-400" />
-          <span>
-            NOVO TECH <span className="text-yellow-400">JN</span>
-          </span>
-        </div>
+        <Link
+          href="/"
+          aria-label="Novotech J.N. Pvt. Ltd home"
+          className="flex items-center"
+        >
+          <div className="relative h-10 w-44 overflow-hidden rounded-lg bg-white shadow-sm sm:w-52">
+            <Image
+              src="/logos/novotech-logo.jpeg"
+              alt="Novotech J.N. Pvt. Ltd"
+              fill
+              sizes="(max-width: 640px) 176px, 208px"
+              className="object-contain p-2"
+              priority
+            />
+          </div>
+        </Link>
 
         <div className="hidden gap-6 text-sm text-slate-200 md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
-              className="transition hover:text-yellow-400"
               href={link.href}
+              className="transition hover:text-yellow-400"
             >
               {link.label}
             </Link>
@@ -34,7 +45,7 @@ export default function Navbar() {
 
         <Link
           href="/quotation"
-          className="hidden rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-4 py-2 font-medium transition hover:from-yellow-500 hover:to-amber-400 md:inline-flex"
+          className="hidden rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-4 py-2 font-medium transition hover:from-yellow-500 hover:to-amber-400 hover:text-slate-950 md:inline-flex"
         >
           Get Quotation
         </Link>
