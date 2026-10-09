@@ -1,31 +1,78 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Section from "@/components/Section";
 import ServiceCard from "@/components/ServiceCard";
 
-const slides = [
+type Slide = {
+  title: string;
+  subtitle: string;
+  image?: string;
+  video?: string;
+};
+
+const slides: Slide[] = [
   {
-    title: "Engineering. Agriculture. Lighting.",
+    title: "Engineering, Automation & Lighting",
     subtitle:
-     "Delivering precision engineering, advanced automation, innovative agriculture and premium architectural lighting solutions tailored for industrial, commercial and lifestyle environments.",
+      "Novotech designs, fabricates and integrates reliable systems for industrial, commercial and architectural environments.",
     video: "/hero/facility.mp4",
   },
-
   {
     title: "Mechanical Design & Fabrication",
     subtitle:
-      "Structural fabrication, welding, machining, industrial installation and custom engineering solutions.",
+      "From structural work to custom machine assemblies, we build solutions that fit the site, the load and the job.",
     image: "/hero/fabrication.jpg",
   },
-
   {
     title: "Architectural & Designer Lighting",
     subtitle:
-      "Premium lighting systems engineered to transform buildings, landscapes and commercial spaces.",
+      "Lighting systems planned to complement the space, support the intended atmosphere and use energy responsibly.",
     image: "/hero/lighting.png",
   },
 ];
+
+const featuredProjects = [
+  {
+    category: "Architectural Lighting",
+    title: "Premium Lighting Installation",
+    description:
+      "Layered lighting selected to define the space, improve comfort and reduce unnecessary energy use.",
+    image: "/projects/lighting-1.jpg",
+    accent: "gold",
+  },
+  {
+    category: "Designer Lighting",
+    title: "Feature Lighting Concept",
+    description:
+      "A custom feature approach that combines a visual focal point with practical lighting control.",
+    image: "/projects/lighting-2.jpg",
+    accent: "gold",
+  },
+  {
+    category: "Facade Lighting",
+    title: "Exterior Illumination System",
+    description:
+      "Exterior illumination arranged to strengthen night-time presence without overwhelming the architecture.",
+    image: "/projects/lighting-3.jpg",
+    accent: "gold",
+  },
+  {
+    category: "Mechanical Fabrication",
+    title: "Industrial Fabrication Project",
+    description:
+      "A robust fabricated assembly prepared for site installation and sustained industrial use.",
+    image: "/projects/mechanical-1.jpg",
+    accent: "blue",
+  },
+  {
+    category: "Precision Engineering",
+    title: "Custom Machinery Solution",
+    description:
+      "A purpose-built mechanical solution developed around the required dimensions, function and workflow.",
+    image: "/projects/mechanical-2.jpg",
+    accent: "blue",
+  },
+] as const;
 
 export default function Home() {
   const [index, setIndex] = useState(0);
@@ -33,449 +80,261 @@ export default function Home() {
   const currentSlide = slides[index];
 
   useEffect(() => {
-  let transitionTimeout: ReturnType<typeof setTimeout> | undefined;
+    let transitionTimeout: ReturnType<typeof setTimeout> | undefined;
 
-  const interval = setInterval(() => {
-    setVisible(false);
+    const interval = setInterval(() => {
+      setVisible(false);
 
-    transitionTimeout = setTimeout(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-      setVisible(true);
-    }, 500);
-  }, 9000);
+      transitionTimeout = setTimeout(() => {
+        setIndex((previous) => (previous + 1) % slides.length);
+        setVisible(true);
+      }, 500);
+    }, 9000);
 
-  return () => {
-    clearInterval(interval);
+    return () => {
+      clearInterval(interval);
 
-    if (transitionTimeout) {
-      clearTimeout(transitionTimeout);
-    }
-  };
-}, []);
+      if (transitionTimeout) {
+        clearTimeout(transitionTimeout);
+      }
+    };
+  }, []);
 
   return (
-    <main className="bg-[#1b3b67] text-white min-h-screen">
+    <main className="min-h-screen bg-slate-950 text-white">
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden text-center">
+        <div
+          key={`hero-${index}`}
+          className={`absolute inset-0 transition-all duration-[2000ms] ${
+            visible ? "scale-105 opacity-100" : "scale-110 opacity-0"
+          }`}
+        >
+          {currentSlide.video ? (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="h-full w-full object-cover"
+            >
+              <source src={currentSlide.video} type="video/mp4" />
+            </video>
+          ) : (
+            <div
+              className="h-full w-full bg-cover bg-center"
+              style={{
+                backgroundImage: `url(${currentSlide.image ?? ""})`,
+              }}
+            />
+          )}
+        </div>
 
-      {/* ========================================= */}
-      {/* HERO SECTION */}
-      {/* ========================================= */}
+        <div className="absolute inset-0 bg-slate-950/55" />
+        <div className="absolute h-[900px] w-[900px] rounded-full bg-blue-500/15 blur-[160px] animate-pulse" />
+        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-yellow-500/10 blur-[120px]" />
 
-      <section className="relative min-h-screen overflow-hidden flex items-center justify-center text-center">
-
-        {/* BACKGROUND MEDIA */}
-          <div
-            key={`hero-${index}`}
-            className={`absolute inset-0 transition-all duration-[2000ms] ${
-              visible ? "scale-105 opacity-100" : "scale-110 opacity-0"
-            }`}
-          >
-            {"video" in currentSlide ? (
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                className="h-full w-full object-cover"
-              >
-                <source src={currentSlide.video} type="video/mp4" />
-              </video>
-            ) : (
-              <div
-                className="h-full w-full bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${currentSlide.image})`,
-                }}
-              />
-            )}
-          </div>
-
-        {/* DARK OVERLAY */}
-        <div className="absolute inset-0 bg-black/65" />
-
-        {/* BLUE GLOW */}
-        <div className="absolute w-[900px] h-[900px] bg-blue-500/15 blur-[160px] rounded-full animate-pulse" />
-
-        {/* GOLD GLOW */}
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-yellow-500/10 blur-[120px] rounded-full" />
-
-        {/* CONTENT */}
-        <div className="relative z-10 px-6 max-w-5xl">
-
-          <p className="uppercase tracking-[0.4em] text-yellow-400 text-sm mb-6">
+        <div className="relative z-10 mx-auto max-w-5xl px-6">
+          <p className="mb-6 text-sm uppercase tracking-[0.4em] text-yellow-400">
             NOVO TECH JN PVT LTD
           </p>
 
           <h1
-            className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto transition-all duration-700 ${
+            className={`mx-auto max-w-4xl text-4xl font-bold leading-tight transition-all duration-700 md:text-5xl lg:text-6xl ${
               visible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
+                ? "translate-y-0 opacity-100"
+                : "translate-y-6 opacity-0"
             }`}
           >
-            {slides[index].title}
+            {currentSlide.title}
           </h1>
 
           <p
-            className={`text-base md:text-lg lg:text-xl text-slate-200 mt-8 max-w-3xl mx-auto leading-relaxed transition-all duration-700 ${
+            className={`mx-auto mt-8 max-w-3xl text-base leading-relaxed text-slate-200 transition-all duration-700 md:text-lg lg:text-xl ${
               visible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
+                ? "translate-y-0 opacity-100"
+                : "translate-y-6 opacity-0"
             }`}
           >
-            {slides[index].subtitle}
+            {currentSlide.subtitle}
           </p>
 
-          <p className="mt-8 text-yellow-400 font-semibold text-lg">
+          <p className="mt-8 text-lg font-semibold text-yellow-400">
             Hotline: +94 710 421 421
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mt-10">
-
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
               href="/services"
-              className="bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-xl font-medium transition"
+              className="rounded-xl bg-blue-600 px-8 py-4 font-medium transition hover:bg-blue-500"
             >
               Explore Services
             </a>
 
             <a
               href="/quotation"
-              className="bg-gradient-to-r from-yellow-500 to-amber-400 hover:from-yellow-400 hover:to-yellow-300 text-black px-8 py-4 rounded-xl font-semibold transition"
+              className="rounded-xl bg-gradient-to-r from-yellow-500 to-amber-400 px-8 py-4 font-semibold text-slate-950 transition hover:from-yellow-400 hover:to-yellow-300"
             >
               Request Quotation
             </a>
-
           </div>
-
         </div>
 
-        {/* SLIDE INDICATORS */}
-        <div className="absolute bottom-10 flex gap-3 z-20">
-
-          {slides.map((_, i) => (
+        <div className="absolute bottom-10 z-20 flex gap-3">
+          {slides.map((slide, slideIndex) => (
             <div
-              key={i}
-              className={`transition-all duration-500 rounded-full ${
-                i === index
-                  ? "w-10 h-2 bg-yellow-400"
-                  : "w-2 h-2 bg-white/40"
+              key={slide.title}
+              className={`rounded-full transition-all duration-500 ${
+                slideIndex === index
+                  ? "h-2 w-10 bg-yellow-400"
+                  : "h-2 w-2 bg-white/40"
               }`}
             />
           ))}
-
         </div>
-
       </section>
 
-      {/* ========================================= */}
-      {/* SERVICES */}
-      {/* ========================================= */}
+      <section className="border-t border-sky-200/50">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <h2 className="mb-4 text-4xl font-bold">Our Core Services</h2>
 
-      <Section>
-        <div className="py-24 px-6 max-w-7xl mx-auto">
+          <div className="mb-8 h-1 w-24 bg-gradient-to-r from-blue-500 to-yellow-400" />
 
-          <h2 className="text-4xl font-bold mb-4">
-            Our Core Services
-          </h2>
-
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-yellow-400 mb-8" />
-
-          <p className="text-slate-300 max-w-2xl mb-14">
-            Engineering solutions designed to improve performance,
-            reliability, efficiency and long-term operational success.
+          <p className="mb-14 max-w-2xl text-slate-300">
+            From fabrication and control panels to lighting installations, we
+            turn site requirements into systems that are practical to build,
+            operate and maintain.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-
+          <div className="grid gap-8 md:grid-cols-3">
             <ServiceCard
               title="Automation"
-              description="Industrial PLC systems, smart control panels, process automation and monitoring."
+              description="PLC control, monitoring and operator interfaces designed around the way your process actually runs."
             />
 
             <ServiceCard
               title="Fabrication"
-              description="Custom fabrication, structural engineering, welding and industrial installations."
+              description="Structures, components and machine assemblies produced for fit-up, strength and long-term serviceability."
             />
 
             <ServiceCard
               title="Architectural Lighting"
-              description="Premium lighting systems combining engineering precision with visual excellence."
+              description="Architectural lighting planned to balance appearance, comfort, control and energy use."
             />
-
           </div>
-
         </div>
-      </Section>
-
-      {/* ========================================= */}
-      {/* COMPANY STATS */}
-      {/* ========================================= */}
-
-      <section className="py-24 px-6 bg-slate-900/30">
-
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-center">
-
-          <div>
-            <h3 className="text-5xl font-bold text-yellow-400">
-              40+
-            </h3>
-            <p className="text-slate-300 mt-2">
-              Years of Engineering Expertise
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-5xl font-bold text-yellow-400">
-              100+
-            </h3>
-            <p className="text-slate-300 mt-2">
-              Projects Delivered
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-5xl font-bold text-yellow-400">
-              24/7
-            </h3>
-            <p className="text-slate-300 mt-2">
-              Technical Support
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-5xl font-bold text-yellow-400">
-              100%
-            </h3>
-            <p className="text-slate-300 mt-2">
-              Custom Solutions
-            </p>
-          </div>
-
-        </div>
-
       </section>
 
-      {/* ========================================= */}
-      {/* PROJECT SHOWCASE */}
-      {/* ========================================= */}
+      <section className="border-y border-sky-200/30 bg-slate-900/45 px-6 py-24">
+        <div className="mx-auto grid max-w-6xl gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["40+", "Years of Engineering Expertise"],
+            ["100+", "Projects Delivered"],
+            ["24/7", "Technical Support"],
+            ["100%", "Custom Solutions"],
+          ].map(([value, label]) => (
+            <div key={label}>
+              <h3 className="text-5xl font-bold text-yellow-400">{value}</h3>
+              <p className="mt-2 text-slate-300">{label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <Section>
-        <div className="py-24 px-6 max-w-7xl mx-auto">
+      <section className="border-t border-sky-200/50">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <h2 className="mb-4 text-4xl font-bold">Project Showcase</h2>
 
-          <h2 className="text-4xl font-bold mb-4">
-            Project Showcase
-          </h2>
+          <div className="mb-8 h-1 w-24 bg-gradient-to-r from-blue-500 to-yellow-400" />
 
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-yellow-400 mb-8" />
-
-          <p className="text-slate-300 max-w-3xl mb-14">
-            From premium architectural lighting installations to industrial
-            fabrication and automation systems, our projects demonstrate
-            engineering precision, innovation and practical performance.
+          <p className="mb-14 max-w-3xl text-slate-300">
+            Selected work across lighting, fabrication and automation, each
+            developed for a specific site, technical requirement and operating
+            outcome.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-6">
+            {featuredProjects.map((project, projectIndex) => {
+              const isGold = project.accent === "gold";
+              const isLastProject =
+                projectIndex === featuredProjects.length - 1;
 
-            {/* LIGHTING 01 */}
-            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-yellow-400 transition-all duration-300">
+              return (
+                <article
+                  key={project.title}
+                  className={`group h-full overflow-hidden rounded-3xl border border-sky-200/50 bg-slate-900 shadow-lg shadow-slate-950/15 transition-all duration-300 hover:-translate-y-1 ${
+                    isGold
+                      ? "hover:border-yellow-400"
+                      : "hover:border-blue-400"
+                  } xl:col-span-2 ${
+                    projectIndex === 3 ? "xl:col-start-2" : ""
+                  } ${
+                    isLastProject
+                      ? "md:col-span-2 md:mx-auto md:w-[calc(50%-1rem)] xl:mx-0 xl:w-auto"
+                      : ""
+                  }`}
+                >
+                  <div
+                    className="h-60 bg-cover bg-center transition duration-700 group-hover:scale-105"
+                    style={{
+                      backgroundImage: `url(${project.image})`,
+                    }}
+                  />
 
-              <div
-                className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
-                style={{
-                  backgroundImage:
-                    "url('/projects/lighting-1.jpg')",
-                }}
-              />
+                  <div className="p-6">
+                    <p
+                      className={`mb-2 text-sm ${
+                        isGold ? "text-yellow-400" : "text-blue-400"
+                      }`}
+                    >
+                      {project.category}
+                    </p>
 
-              <div className="p-6">
+                    <h3 className="mb-3 text-xl font-semibold">
+                      {project.title}
+                    </h3>
 
-                <p className="text-yellow-400 text-sm mb-2">
-                  Architectural Lighting
-                </p>
-
-                <h3 className="text-xl font-semibold mb-3">
-                  Premium Lighting Installation
-                </h3>
-
-                <p className="text-slate-300">
-                  High-end lighting design engineered to enhance visual impact,
-                  ambience and energy efficiency.
-                </p>
-
-              </div>
-
-            </div>
-
-            {/* LIGHTING 02 */}
-            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-yellow-400 transition-all duration-300">
-
-              <div
-                className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
-                style={{
-                  backgroundImage:
-                    "url('/projects/lighting-2.jpg')",
-                }}
-              />
-
-              <div className="p-6">
-
-                <p className="text-yellow-400 text-sm mb-2">
-                  Designer Lighting
-                </p>
-
-                <h3 className="text-xl font-semibold mb-3">
-                  Feature Lighting Concept
-                </h3>
-
-                <p className="text-slate-300">
-                  Bespoke lighting solutions delivering aesthetic excellence
-                  and intelligent control integration.
-                </p>
-
-              </div>
-
-            </div>
-
-            {/* LIGHTING 03 */}
-            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-yellow-400 transition-all duration-300">
-
-              <div
-                className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
-                style={{
-                  backgroundImage:
-                    "url('/projects/lighting-3.jpg')",
-                }}
-              />
-
-              <div className="p-6">
-
-                <p className="text-yellow-400 text-sm mb-2">
-                  Facade Lighting
-                </p>
-
-                <h3 className="text-xl font-semibold mb-3">
-                  Exterior Illumination System
-                </h3>
-
-                <p className="text-slate-300">
-                  Precision facade lighting designed to elevate architectural
-                  identity and nighttime visibility.
-                </p>
-
-              </div>
-
-            </div>
-
-            
-            {/* MECHANICAL 01 */}
-            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-blue-500 transition-all duration-300">
-
-              <div
-                className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
-                style={{
-                  backgroundImage:
-                    "url('/projects/mechanical-1.jpg')",
-                }}
-              />
-
-              <div className="p-6">
-
-                <p className="text-blue-400 text-sm mb-2">
-                  Mechanical Fabrication
-                </p>
-
-                <h3 className="text-xl font-semibold mb-3">
-                  Industrial Fabrication Project
-                </h3>
-
-                <p className="text-slate-300">
-                  Heavy-duty fabrication engineered for reliability,
-                  durability and operational efficiency.
-                </p>
-
-              </div>
-
-            </div>
-
-            {/* MECHANICAL 02 */}
-            <div className="group bg-slate-900 border border-sky-200/50 rounded-3xl overflow-hidden hover:border-blue-500 transition-all duration-300">
-
-              <div
-                className="h-60 bg-cover bg-center group-hover:scale-105 transition duration-700"
-                style={{
-                  backgroundImage:
-                    "url('/projects/mechanical-2.jpg')",
-                }}
-              />
-
-              <div className="p-6">
-
-                <p className="text-blue-400 text-sm mb-2">
-                  Precision Engineering
-                </p>
-
-                <h3 className="text-xl font-semibold mb-3">
-                  Custom Machinery Solution
-                </h3>
-
-                <p className="text-slate-300">
-                  Designed and manufactured to meet demanding industrial
-                  performance requirements.
-                </p>
-
-              </div>
-
-            </div>
-
+                    <p className="text-slate-300">{project.description}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
 
-          {/* AUTOMATION FEATURE */}
-
-          <div className="mt-16 bg-gradient-to-r from-blue-950/60 to-slate-900 border border-blue-500/20 rounded-3xl overflow-hidden">
-
+          <div className="mt-16 overflow-hidden rounded-3xl border border-blue-400/35 bg-gradient-to-r from-blue-950/60 to-slate-900">
             <div className="grid lg:grid-cols-2">
-
               <div
                 className="min-h-[350px] bg-cover bg-center"
                 style={{
-                  backgroundImage:
-                    "url('/projects/automation-demo.jpg')",
+                  backgroundImage: "url('/projects/automation-demo.jpg')",
                 }}
               />
 
-              <div className="p-10 flex flex-col justify-center">
-
-                <p className="text-blue-400 mb-3">
+              <div className="flex flex-col justify-center p-10">
+                <p className="mb-3 text-blue-400">
                   PLC & Industrial Automation
                 </p>
 
-                <h3 className="text-3xl font-bold mb-5">
+                <h3 className="mb-5 text-3xl font-bold">
                   Automation Demonstration System
                 </h3>
 
-                <p className="text-slate-200 leading-relaxed mb-6">
-                  Integrated PLC control, monitoring and automation
-                  technologies developed to improve productivity,
-                  reliability and process visibility.
+                <p className="mb-6 leading-relaxed text-slate-200">
+                  A PLC-based demonstration system bringing control, feedback
+                  and operating status into one practical interface.
                 </p>
 
                 <a
                   href="/portfolio"
-                  className="w-fit bg-gradient-to-r from-blue-600 to-blue-500 hover:from-yellow-500 hover:to-amber-400 px-6 py-3 rounded-xl font-medium transition"
+                  className="w-fit rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3 font-medium transition hover:from-yellow-500 hover:to-amber-400 hover:text-slate-950"
                 >
                   View Full Portfolio
                 </a>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-      </Section>
-
+      </section>
     </main>
   );
 }

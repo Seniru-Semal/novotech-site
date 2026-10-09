@@ -9,29 +9,68 @@ export const metadata: Metadata = {
     "Explore Novotech engineering, fabrication, automation and architectural lighting work, together with our group-company network and selected customers.",
 };
 
-const groupCompanies = [
-  { name: "Illukkumbura Industrial Automation", mark: "IIAL" },
-  { name: "Bianco", mark: "B" },
-  { name: "Ceylektra", mark: "CE" },
-  { name: "Zeus Power", mark: "ZP" },
-  { name: "Ceylux", mark: "CL" },
-  { name: "Azzuro", mark: "AZ" },
+type Organization = {
+  name: string;
+  logo: string;
+};
+
+const groupCompanies: Organization[] = [
+  {
+    name: "Illukkumbura Industrial Automation",
+    logo: "/logos/iial.png",
+  },
+  {
+    name: "Bianco",
+    logo: "/logos/bianco.jpg",
+  },
+  {
+    name: "Ceylekra",
+    logo: "/logos/ceylektra.png",
+  },
+  {
+    name: "Zeus Power",
+    logo: "/logos/zeus power.jpg",
+  },
+  {
+    name: "Cellux",
+    logo: "/logos/cellux.jpg",
+  },
+  {
+    name: "Azzuro",
+    logo: "/logos/azzuro.jpg",
+  },
 ];
 
-const customers = [
-  { name: "GPV", mark: "GPV" },
-  { name: "GRI", mark: "GRI" },
-  { name: "LOLC", mark: "LOLC" },
-  { name: "Tea Avenue", mark: "TA" },
+const customers: Organization[] = [
+  {
+    name: "GPV",
+    logo: "/logos/gpv.jpg",
+  },
+  {
+    name: "GRI",
+    logo: "/logos/gri.jpg",
+  },
+  {
+    name: "LOLC",
+    logo: "/logos/lolc.png",
+  },
+  {
+    name: "Tea Avenue",
+    logo: "/logos/tea avenue.jpg",
+  },
 ];
-
-type Organization = (typeof groupCompanies)[number];
 
 function OrganizationTile({ organization }: { organization: Organization }) {
   return (
-    <article className="group flex min-h-44 flex-col justify-between rounded-2xl border border-sky-200/60 bg-slate-950 p-6 transition hover:-translate-y-1 hover:border-yellow-400/70">
-      <div className="flex h-12 w-fit min-w-12 items-center justify-center rounded-xl border border-sky-200/60 bg-slate-900 px-3 text-sm font-bold tracking-wide text-yellow-300">
-        {organization.mark}
+    <article className="group flex min-h-52 flex-col justify-between rounded-2xl border border-sky-200/60 bg-slate-800/90 p-6 text-center shadow-lg shadow-slate-950/15 transition hover:-translate-y-1 hover:border-yellow-400/70 hover:bg-slate-800">
+      <div className="relative h-24 w-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow-inner">
+        <Image
+          src={organization.logo}
+          alt={`${organization.name} logo`}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-contain p-4"
+        />
       </div>
 
       <h3 className="mt-8 text-lg font-semibold text-white">
@@ -53,17 +92,19 @@ export default function PortfolioPage() {
           Our Portfolio
         </h1>
 
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-400">
-          Explore engineering, automation, fabrication and lighting work developed
-          with a focus on practical performance and lasting value.
+        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">
+          Examples of engineering and lighting work, together with companies and
+          customers connected to the Illukkumbura Group network.
         </p>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="max-w-2xl">
           <h2 className="text-3xl font-bold">Featured Projects</h2>
-          <p className="mt-3 text-slate-400">
-            A selection of work across Novotech&apos;s core service areas.
+
+          <p className="mt-3 text-slate-300">
+            Selected work spanning mechanical fabrication, automation and
+            architectural lighting.
           </p>
         </div>
 
@@ -71,7 +112,7 @@ export default function PortfolioPage() {
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group overflow-hidden rounded-3xl border border-sky-200/60 bg-slate-900 transition hover:-translate-y-2 hover:border-blue-400/60"
+              className="group overflow-hidden rounded-3xl border border-sky-200/60 bg-slate-900 shadow-lg shadow-slate-950/15 transition hover:-translate-y-2 hover:border-blue-400 hover:bg-slate-800"
             >
               <div className="relative h-60 overflow-hidden">
                 <Image
@@ -94,7 +135,7 @@ export default function PortfolioPage() {
                   {project.title}
                 </h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                <p className="mt-3 text-sm leading-relaxed text-slate-300">
                   {project.description}
                 </p>
               </div>
@@ -103,7 +144,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-800 bg-slate-900/70 px-6 py-24">
+      <section className="border-y border-sky-200/30 bg-slate-900/70 px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-300">
@@ -114,10 +155,10 @@ export default function PortfolioPage() {
               Illukkumbura Group Companies
             </h2>
 
-            <p className="mt-5 leading-relaxed text-slate-400">
-              Specialized companies within the Illukkumbura Group, bringing
-              complementary engineering, electrical and technical capabilities to
-              the wider network.
+            <p className="mt-5 leading-relaxed text-slate-300">
+              Companies within the Illukkumbura Group contribute complementary
+              engineering, electrical and technical capabilities across the
+              wider network.
             </p>
           </div>
 
@@ -137,9 +178,9 @@ export default function PortfolioPage() {
 
           <h2 className="mt-4 text-4xl font-bold">Selected Customers</h2>
 
-          <p className="mt-5 leading-relaxed text-slate-400">
-            Organizations that have engaged with our wider engineering capabilities
-            across industrial, commercial and lifestyle environments.
+          <p className="mt-5 leading-relaxed text-slate-300">
+            Organisations that have worked with the wider group across
+            industrial, commercial and lifestyle environments.
           </p>
         </div>
 
@@ -150,27 +191,27 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-8 md:grid-cols-2 md:py-20">
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-2">
         <div>
           <h2 className="text-4xl font-bold leading-tight">
             Precision Engineering Meets Visual Excellence
           </h2>
 
-          <div className="mt-7 space-y-5 leading-relaxed text-slate-300">
+          <div className="mt-7 space-y-5 leading-relaxed text-slate-200">
             <p>
-              Our work is designed to solve practical engineering challenges while
-              delivering long-term reliability, efficiency and visual quality.
+              Our work is developed to solve practical engineering challenges
+              while supporting reliability, efficiency and visual quality.
             </p>
 
             <p>
-              From industrial automation systems to premium architectural lighting
-              environments, every solution is developed with attention to detail and
-              technical precision.
+              Whether the requirement is an industrial system or an
+              architectural lighting environment, the final solution is shaped
+              around the site and the way it will be used.
             </p>
           </div>
         </div>
 
-        <div className="relative min-h-80 overflow-hidden rounded-3xl border border-sky-200/60">
+        <div className="relative min-h-80 overflow-hidden rounded-3xl border border-sky-200/60 shadow-lg shadow-slate-950/20">
           <Image
             src="/projects/mechanical-2.jpg"
             alt="Novotech precision engineering work"
@@ -187,14 +228,14 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="mt-12 bg-slate-950 px-6 py-28 text-center">
+      <section className="mt-12 border-y border-sky-200/30 bg-slate-900 px-6 py-28 text-center">
         <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight md:text-5xl">
           Let&apos;s Create Your Next Engineering Success Story
         </h2>
 
-        <p className="mx-auto mt-8 max-w-3xl text-lg text-slate-400">
-          Our team is ready to design, fabricate, automate and deliver a solution
-          tailored to your requirements.
+        <p className="mx-auto mt-8 max-w-3xl text-lg text-slate-300">
+          Our team is ready to design, fabricate, automate and deliver a
+          solution tailored to your requirements.
         </p>
 
         <div className="mt-12 flex flex-wrap justify-center gap-4">
@@ -207,7 +248,7 @@ export default function PortfolioPage() {
 
           <Link
             href="/contact"
-            className="rounded-2xl border border-sky-200/60 py-4 font-semibold transition hover:bg-slate-100 hover:text-slate-950"
+            className="rounded-2xl border border-sky-200/60 px-8 py-4 font-semibold transition hover:bg-slate-100 hover:text-slate-950"
           >
             Contact Us
           </Link>

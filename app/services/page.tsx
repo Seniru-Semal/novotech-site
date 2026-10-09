@@ -9,7 +9,6 @@ const services = [
       "Industrial machinery levelling, positioning & installation",
     ],
   },
-
   {
     title: "Precision Machining",
     items: [
@@ -19,7 +18,6 @@ const services = [
       "Repair and reconditioning",
     ],
   },
-
   {
     title: "Electro-Mechanical Systems",
     items: [
@@ -28,7 +26,6 @@ const services = [
       "Prototype design",
     ],
   },
-
   {
     title: "PLC & Automation Solutions",
     items: [
@@ -38,7 +35,6 @@ const services = [
       "Process optimization",
     ],
   },
-
   {
     title: "Architectural & Designer Lighting",
     items: [
@@ -48,7 +44,6 @@ const services = [
       "Decorative and facade lighting",
     ],
   },
-
   {
     title: "Customized Engineering Solutions",
     items: [
@@ -57,7 +52,6 @@ const services = [
       "Unique problem-solving solutions",
     ],
   },
-
   {
     title: "Agricultural & Greenhouse Solutions",
     items: [
@@ -68,160 +62,154 @@ const services = [
   },
 ];
 
+const industries = [
+  "Industrial & Manufacturing",
+  "Construction & Architecture",
+  "Commercial & Retail",
+  "Agriculture & Farming",
+  "Residential Projects",
+];
+
+const strengths = [
+  "One team across engineering, fabrication and automation",
+  "Solutions shaped around the actual operating environment",
+  "Practical designs that can be built and maintained",
+  "Clear communication from scope to handover",
+  "Quality checks before commissioning",
+  "Long-term technical support",
+];
+
+const projectSteps = [
+  "Requirement Analysis",
+  "Concept & Design",
+  "Engineering & Fabrication",
+  "Integration & Testing",
+  "Installation & Commissioning",
+];
+
 export default function ServicesPage() {
   return (
-    <main className="bg-slate-950 text-white min-h-screen">
-
-      {/* HERO */}
-      <section className="py-24 px-6 text-center border-b border-slate-800">
-        <h1 className="text-4xl md:text-5xl font-bold">
+    <main className="min-h-screen bg-slate-950 text-white">
+      <section className="border-b border-slate-800 px-6 py-24 text-center">
+        <h1 className="text-4xl font-bold md:text-5xl">
           Engineering Solutions Built for Performance
         </h1>
 
-        <p className="mt-6 text-slate-300 max-w-3xl mx-auto text-lg">
-          We deliver integrated engineering, automation, fabrication, and lighting solutions tailored for industrial, commercial, agricultural, and residential applications.
+        <p className="mx-auto mt-6 max-w-3xl text-lg text-slate-300">
+          From fabrication and automation to greenhouse systems and
+          architectural lighting, we develop practical solutions for industrial,
+          commercial and residential environments.
         </p>
       </section>
 
-      {/* SERVICES GRID */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
-
-        <div className="grid md:grid-cols-2 gap-8">
-
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-slate-900 border border-sky-200/60 rounded-2xl p-8 hover:border-blue-500 transition"
+            <article
+              key={service.title}
+              className={`h-full rounded-2xl border border-sky-200/60 bg-slate-900 p-8 shadow-lg shadow-slate-950/15 transition hover:-translate-y-1 hover:border-blue-400 hover:bg-slate-800 ${
+                services.length % 3 === 1 && index === services.length - 1
+                  ? "xl:col-start-2"
+                  : ""
+              }`}
             >
-
-              <h2 className="text-2xl font-bold mb-6 text-blue-400">
+              <h2 className="mb-6 text-2xl font-bold text-blue-400">
                 {service.title}
               </h2>
 
               <ul className="space-y-3 text-slate-200">
-                {service.items.map((item, i) => (
-                  <li key={i} className="flex gap-3">
+                {service.items.map((item) => (
+                  <li key={item} className="flex gap-3">
                     <span className="text-blue-400">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-
-            </div>
+            </article>
           ))}
-
         </div>
-
       </section>
 
-      {/* INDUSTRIES */}
-      <section className="py-20 px-6 bg-slate-900">
-
-        <h2 className="text-3xl font-bold text-center mb-12">
+      <section className="border-y border-sky-200/30 bg-slate-900 px-6 py-20">
+        <h2 className="mb-12 text-center text-3xl font-bold">
           Industries We Serve
         </h2>
 
-        <div className="grid md:grid-cols-5 gap-6 text-center max-w-6xl mx-auto">
-
-          {[
-            "Industrial & Manufacturing",
-            "Construction & Architecture",
-            "Commercial & Retail",
-            "Agriculture & Farming",
-            "Residential Projects",
-          ].map((industry, index) => (
+        <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {industries.map((industry, index) => (
             <div
-              key={index}
-              className="bg-slate-950 border border-sky-200/60 rounded-xl p-6"
+              key={industry}
+              className={`flex min-h-32 items-center justify-center rounded-xl border border-sky-200/60 bg-slate-950 p-6 text-center shadow-lg shadow-slate-950/15 ${
+                index === industries.length - 1
+                  ? "sm:col-span-2 sm:mx-auto sm:w-[calc(50%-0.75rem)] lg:col-span-1 lg:mx-0 lg:w-auto"
+                  : ""
+              }`}
             >
               {industry}
             </div>
           ))}
-
         </div>
-
       </section>
 
-      {/* WHY CHOOSE US */}
-      <section className="py-20 px-6 max-w-6xl mx-auto">
-
-        <h2 className="text-3xl font-bold text-center mb-12">
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <h2 className="mb-12 text-center text-3xl font-bold">
           Why Choose Us
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
-
-          {[
-            "All-in-One Expertise – Engineering + Automation + Innovative Solutions",
-            "Custom-Built Solutions – Designed specifically for your needs",
-            "Quality & Precision – Built to last",
-            "Practical Approach – Solutions that work in real conditions",
-            "Reliable Delivery – On time, every time",
-          ].map((point, index) => (
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {strengths.map((strength) => (
             <div
-              key={index}
-              className="bg-slate-900 bborder border-sky-200/60 rounded-xl p-6"
+              key={strength}
+              className="flex min-h-32 items-center justify-center rounded-xl border border-sky-200/60 bg-slate-900 p-6 text-center shadow-lg shadow-slate-950/15"
             >
-              {point}
+              {strength}
             </div>
           ))}
-
         </div>
-
       </section>
 
-      {/* PROJECT APPROACH */}
-      <section className="py-20 px-6 bg-slate-900">
-
-        <h2 className="text-3xl font-bold text-center mb-12">
+      <section className="border-y border-sky-200/30 bg-slate-900 px-6 py-20">
+        <h2 className="mb-12 text-center text-3xl font-bold">
           Our Project Approach
         </h2>
 
-        <div className="grid md:grid-cols-5 gap-6 max-w-7xl mx-auto text-center">
-
-          {[
-            "Requirement Analysis",
-            "Concept & Design",
-            "Engineering & Fabrication",
-            "Integration & Testing",
-            "Installation & Commissioning",
-          ].map((step, index) => (
+        <div className="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {projectSteps.map((step, index) => (
             <div
-              key={index}
-              className="bg-slate-950 border border-sky-200/60 rounded-xl p-6"
+              key={step}
+              className={`rounded-xl border border-sky-200/60 bg-slate-950 p-6 text-center shadow-lg shadow-slate-950/15 ${
+                index === projectSteps.length - 1
+                  ? "sm:col-span-2 sm:mx-auto sm:w-[calc(50%-0.75rem)] lg:col-span-1 lg:mx-0 lg:w-auto"
+                  : ""
+              }`}
             >
-              <div className="text-blue-400 font-bold text-2xl mb-3">
+              <div className="mb-3 text-2xl font-bold text-blue-400">
                 {index + 1}
               </div>
 
               <div>{step}</div>
             </div>
           ))}
-
         </div>
-
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 text-center">
-
-        <h2 className="text-4xl font-bold mb-6">
+      <section className="px-6 py-24 text-center">
+        <h2 className="mb-6 text-4xl font-bold">
           Let’s Build Smarter Systems Together
         </h2>
 
-        <p className="text-slate-300 mb-8 max-w-3xl mx-auto">
-          Contact us today to discuss your engineering, automation, fabrication, or lighting project requirements.
+        <p className="mx-auto mb-8 max-w-3xl text-slate-300">
+          Tell us what you need to achieve, and we will help define the right
+          engineering, automation, fabrication or lighting solution.
         </p>
 
         <a
           href="/quotation"
-          className="bg-blue-500 hover:bg-blue-600 px-8 py-4 rounded-xl"
+          className="rounded-xl bg-blue-500 px-8 py-4 transition hover:bg-blue-600"
         >
           Request a Quotation
         </a>
-
       </section>
-
     </main>
   );
 }

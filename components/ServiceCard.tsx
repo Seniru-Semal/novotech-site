@@ -1,4 +1,3 @@
-
 export default function ServiceCard({
   title,
   description,
@@ -7,9 +6,10 @@ export default function ServiceCard({
   description: string;
 }) {
   return (
-    <div className="bg-slate-900/80 backdrop-blur border border-sky-200/60 p-6 rounded-2xl border border-sky-200/60 hover:border-blue-500/30 transition">
-      <h3 className="text-xl font-semibold mb-4">{title}</h3>
-      <p className="text-slate-300 leading-relaxed">{description}</p>
-    </div>
+    <article className="h-full rounded-2xl border border-sky-200/60 bg-slate-900/90 p-6 shadow-lg shadow-slate-950/15 transition hover:-translate-y-1 hover:border-blue-400 hover:bg-slate-800">
+      <h3 className="mb-4 text-xl font-semibold">{title}</h3>
+
+      <p className="leading-relaxed text-slate-300">{description}</p>
+    </article>
   );
 }

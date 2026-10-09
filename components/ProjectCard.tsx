@@ -12,31 +12,19 @@ export default function ProjectCard({
   image,
 }: Props) {
   return (
-    <div className="group bg-slate-900/80 backdrop-blur border border-sky-200/50 rounded-xl overflow-hidden border border-sky-200/50 hover:border-blue-500/40 transition">
-
-      {/* IMAGE */}
+    <article className="group overflow-hidden rounded-xl border border-sky-200/60 bg-slate-900/90 shadow-lg shadow-slate-950/15 transition hover:-translate-y-1 hover:border-blue-400 hover:bg-slate-800">
       <div
-        className="h-48 bg-cover bg-center group-hover:scale-105 transition duration-500"
+        className="h-48 bg-cover bg-center transition duration-500 group-hover:scale-105"
         style={{ backgroundImage: `url(${image})` }}
       />
 
-      {/* CONTENT */}
       <div className="p-4">
+        <p className="mb-2 text-sm text-blue-400">{category}</p>
 
-        <p className="text-blue-400 text-sm mb-2">
-          {category}
-        </p>
+        <h3 className="mb-2 text-lg font-bold">{title}</h3>
 
-        <h3 className="font-bold text-lg mb-2">
-          {title}
-        </h3>
-
-        <p className="text-slate-300 text-sm">
-          {description}
-        </p>
-
+        <p className="text-sm text-slate-300">{description}</p>
       </div>
-
-    </div>
+    </article>
   );
 }
