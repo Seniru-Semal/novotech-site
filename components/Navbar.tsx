@@ -12,20 +12,20 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 w-full border-b border-slate-800 bg-slate-950/95 px-4 py-4 text-white backdrop-blur md:px-6">
+    <nav className="fixed inset-x-0 top-0 z-50 min-h-20 w-full border-b border-slate-800 bg-slate-950/95 px-4 py-3 text-white backdrop-blur md:px-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <Link
           href="/"
           aria-label="Novotech J.N. Pvt. Ltd home"
-          className="flex items-center"
+          className="flex shrink-0 items-center"
         >
-          <div className="relative h-10 w-44 overflow-hidden rounded-lg bg-white shadow-sm sm:w-52">
+          <div className="relative h-12 w-48 sm:w-56">
             <Image
               src="/logos/novotech-logo.jpeg"
               alt="Novotech J.N. Pvt. Ltd"
               fill
-              sizes="(max-width: 640px) 176px, 208px"
-              className="object-cover object-center"
+              sizes="(max-width: 640px) 192px, 224px"
+              className="object-contain"
               priority
             />
           </div>
